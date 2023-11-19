@@ -1,8 +1,9 @@
 package com.example.demo.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.example.demo.util.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 
 import java.io.Serializable;
@@ -26,6 +27,6 @@ public class PautaDTO implements Serializable {
     private String status;
 
     @JsonProperty("datahora_limite")
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime tempoLimite;
 }
